@@ -1,0 +1,33 @@
+allprojects {
+    apply plugin: 'java'    
+    apply plugin: 'eclipse'
+
+    repositories {
+        mavenCentral()
+    }
+
+    group = 'com.peterjurkovic'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = 1.8
+
+    buildscript {
+        ext {
+            springBootVersion = '2.0.0.RELEASE'
+        }
+        repositories {
+            mavenCentral()
+        }
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        }
+    }
+    
+    dependencies {
+
+        compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
+        
+        compileOnly('org.projectlombok:lombok:1.16.20')
+
+    }
+        
+}

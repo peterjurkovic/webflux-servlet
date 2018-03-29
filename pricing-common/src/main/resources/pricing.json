@@ -1,0 +1,28 @@
+[
+   {
+      "price":"0.001"
+   },
+   {
+      "product":"messsanger",
+      "price":"0.015"
+   },
+   {
+      "product":"workflows",
+      "price":"0.016"
+   },
+   {
+      "product":"messsanger",
+      "country":"GB",
+      "price":"0.022"
+   },
+   {
+      "product":"messsanger",
+      "country":"US",
+      "price":"0.020"
+   },
+   {
+      "product":"messsanger",
+      "account":"peter",
+      "price":"0.0"
+   }
+]

@@ -1,0 +1,22 @@
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+        
+
+spring:
+  cache:
+    redis:
+      time-to-live:
+        600000
+ 
+nexmo:
+  accounts:
+    host: accounts.qa
+    port: 3600
+    key:  98eg9e8gbwe9g4vvbviesv7evoevbsie75ise7sv7eosebv
+
+logging:
+  level:
+    com.peterjurkovic: info
