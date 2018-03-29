@@ -18,10 +18,12 @@ import reactor.core.publisher.Mono;
 @RestController
 public class PricingController {
     
-    @Autowired
+    @Autowired // <- injected by a framework
     private AccountsHttpClient accountsClient;
     
-    @Autowired CostHttpClient costClient;
+    @Autowired
+    private CostHttpClient costClient;
+    
     @Autowired
     private PricingRepository pricingRepository;
     
@@ -32,12 +34,13 @@ public class PricingController {
     
     @GetMapping("/price/{product}/{account}")
     public Mono<PriceResponse> getProductPrice(@PathVariable String product,@PathVariable String account){
-        // it will be loaded in parallel
+        // this will be loaded in parallel
         return Mono.zip(
+                        // calculated from an app memory
                         pricingRepository.findForProduct(product),
-                        
+                        // it issue HTTP call to phub
                         costClient.getCost(),
-                        
+                        // HTTP call to account service
                         accountsClient.getById(account))
                 .map(this::toResponse);
     }
