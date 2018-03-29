@@ -20,7 +20,6 @@ public class PricingController {
     
     @Autowired
     private AccountsHttpClient accountsClient;
-  
     
     @Autowired CostHttpClient costClient;
     @Autowired
@@ -33,6 +32,7 @@ public class PricingController {
     
     @GetMapping("/price/{product}/{account}")
     public Mono<PriceResponse> getProductPrice(@PathVariable String product,@PathVariable String account){
+        // it will be loaded in parallel
         return Mono.zip(
                         pricingRepository.findForProduct(product),
                         
@@ -47,7 +47,6 @@ public class PricingController {
         return costClient.getCost();
                     
     }
-    
     
     private PriceResponse toResponse(reactor.util.function.Tuple3<Price, Cost, Account> tuple) {
         return new PriceResponse(tuple.getT1(), tuple.getT2(), tuple.getT3()); 

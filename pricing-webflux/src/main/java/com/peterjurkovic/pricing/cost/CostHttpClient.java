@@ -42,7 +42,6 @@ public class CostHttpClient {
                 .map( CostResponse::getCost);
     }
     
-    
     @Data
     @EqualsAndHashCode(callSuper = false)
     @JsonIgnoreProperties(ignoreUnknown = true)

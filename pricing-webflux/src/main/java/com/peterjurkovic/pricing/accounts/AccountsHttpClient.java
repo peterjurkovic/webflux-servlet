@@ -22,36 +22,31 @@ public class AccountsHttpClient {
     private static final Logger log = LoggerFactory.getLogger(AccountsHttpClient.class);
     
     private final WebClient client;
+    
     public AccountsHttpClient(AccountsConfig config) {
         client = WebClient.builder()
-                .baseUrl("http://accounts.qa:3600")
+                .baseUrl(config.getBaseUrl())
                 .defaultUriVariables(singletonMap("key", config.getKey()))
                 .build();
     }
     
     public Mono<Account> getById(String id){
 
-        return client
-                .get()
-                .uri("/accounts/json?cmd=get&key={key}&sysid={sysid}", singletonMap("sysid", id))
-                .accept(APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(AccountResponse.class)
-                .doOnNext(acc -> log.debug("Account loaded" + acc))
-                .map( AccountResponse::getAccount);
-                
-            
-        
+        return client.get()
+                     .uri("/accounts/json?cmd=get&key={key}&sysid={sysid}", singletonMap("sysid", id))
+                     .accept(APPLICATION_JSON)
+                     .retrieve()
+                     .bodyToMono(AccountResponse.class)
+                     .doOnNext(acc -> log.debug("Account loaded" + acc))
+                     .map( AccountResponse::getAccount);
     }
-    
-    
     
     @Data
     @EqualsAndHashCode(callSuper = false)
     @JsonIgnoreProperties(ignoreUnknown = true)
     static class AccountResponse extends BaseResponse{
-        private Account account;
         
+        private Account account;
         
     }
 }
