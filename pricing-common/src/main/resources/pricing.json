@@ -3,7 +3,7 @@
       "price":"0.001"
    },
    {
-      "product":"messsanger",
+      "product":"messanger",
       "price":"0.015"
    },
    {
@@ -11,17 +11,17 @@
       "price":"0.016"
    },
    {
-      "product":"messsanger",
+      "product":"messanger",
       "country":"GB",
       "price":"0.022"
    },
    {
-      "product":"messsanger",
+      "product":"messanger",
       "country":"US",
       "price":"0.020"
    },
    {
-      "product":"messsanger",
+      "product":"messanger",
       "account":"peter",
       "price":"0.0"
    }

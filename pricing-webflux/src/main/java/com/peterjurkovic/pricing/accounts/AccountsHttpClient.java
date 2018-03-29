@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.peterjurkovic.common.BaseResponse;
 import com.peterjurkovic.common.domain.Account;
 
@@ -26,7 +24,7 @@ public class AccountsHttpClient {
     private final WebClient client;
     public AccountsHttpClient(AccountsConfig config) {
         client = WebClient.builder()
-                .baseUrl(config.getBaseUrl())
+                .baseUrl("http://accounts.qa:3600")
                 .defaultUriVariables(singletonMap("key", config.getKey()))
                 .build();
     }
